@@ -35,6 +35,14 @@ RSpec.describe PhoneNumber, :type => :service do
         expect(phone_number.to_formatted).to eq "031-1234-5678"
       end
     end
+    
+    context "when receiving the local number '0212345678'" do
+      let(:phone_number) { PhoneNumber.new("0212345678", "+82") }
+      
+      it "should return '02-xxx-xxxx' format" do
+        expect(phone_number.to_formatted).to eq "02-1234-5678"
+      end
+    end
   end
   
 end
