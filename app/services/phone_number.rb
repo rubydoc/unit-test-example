@@ -5,11 +5,11 @@ class PhoneNumber
   end
   
   def to_formatted
-    if @country == "+82"
+    if @country == "ko"
       if @number.length > 10
         split_by_point(3,7)
       else
-        if is_seoul? 
+        if is_seoul?
           seoul_number_formatted
         else
           split_by_point(3,6)
