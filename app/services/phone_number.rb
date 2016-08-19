@@ -8,8 +8,12 @@ class PhoneNumber
     if @country == "+82"
       if @number.length > 10
         split_by_point(3,7)
-      elsif @number.length == 10
-        split_by_point(2,6)
+      else
+        if @number[0...2] == "02"
+          split_by_point(2,6)
+        else
+          split_by_point(3,6)
+        end
       end
     else
       "not available"
