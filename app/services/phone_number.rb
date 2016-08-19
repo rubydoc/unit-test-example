@@ -5,6 +5,21 @@ class PhoneNumber
   end
   
   def to_formatted
-    "#{@number[0...3]}-#{@number[3...7]}-#{@number[7..-1]}"
+    if @country == "+82"
+      if @number.length > 10
+        split_by_point(3,7)
+      else
+        split_by_point(3,6)
+      end
+    else
+      "not available"
+    end
+    
+  end
+  
+  private
+
+  def split_by_point(first, second)
+    "#{@number[0...first]}-#{@number[first...second]}-#{@number[second..-1]}"
   end
 end
